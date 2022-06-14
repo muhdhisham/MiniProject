@@ -4,7 +4,9 @@ import cv2 as cv
 import mediapipe as mp
 from model import KeyPointClassifier
 from app_files import calc_landmark_list, draw_info_text, draw_landmarks, get_args, pre_process_landmark
+import pyttsx3
 
+engine = pyttsx3.init()
 
 def main():
     args = get_args()
@@ -68,9 +70,10 @@ def main():
                     debug_image,
                     handedness,
                     keypoint_classifier_labels[hand_sign_id])
-
+                engine.say(keypoint_classifier_labels[hand_sign_id])
+                engine.runAndWait()
         cv.imshow('Hand Gesture Recognition', debug_image)
-
+        
     cap.release()
     cv.destroyAllWindows()
 

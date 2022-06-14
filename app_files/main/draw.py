@@ -1,6 +1,7 @@
 import cv2 as cv
 import pyttsx3
 import os
+import time
 
 engine = pyttsx3.init()
 def draw_landmarks(image, landmark_point):
@@ -194,8 +195,11 @@ def draw_info_text(image, handedness, hand_sign_text):
 
         info_text = handedness.classification[0].label[0:]
         if hand_sign_text != "":
-                engine.say(hand_sign_text)
                 info_text = "Predicted Text" + ':' + hand_sign_text
-                engine.runAndWait()
                 cv.putText(image, info_text, (10, 60), cv.FONT_HERSHEY_SIMPLEX, 1.0, (196, 255, 255), 2, cv.LINE_AA)
+                # time.sleep(3)
+                
+                # engine.say(hand_sign_text)
+                # engine.runAndWait()
+
         return image
