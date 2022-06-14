@@ -44,7 +44,7 @@ def main():
 
         ret, image = cap.read()
         if not ret:
-            break
+            breakif
         image = cv.flip(image, 1) 
         debug_image = copy.deepcopy(image)
         # print(debug_image.shape)
